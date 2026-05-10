@@ -5,11 +5,14 @@
 def check_password_contains_alpha(password):
     # a - z ya A - Z
     alpha = 'abcdefghijklmnopqrstuvwxyz'
+    count = 0
     for char in password:
         if char in alpha:
-            return True
+            count +=1
 
-    return False
+    if count < 2 or count > 5:
+        return False
+    return True
 
 def check_password_contains_digit(password):
     number = '0123456789'
@@ -17,6 +20,19 @@ def check_password_contains_digit(password):
         if char in number:
             return True
     return False
+
+def check_password_contains_specialchar(password):
+    special="@#!_&"
+    count = 0
+
+    for char in password:
+        if char in special:
+            count += 1
+
+    if count >= 2 :
+        return True
+    return False
+
 
 while True:
     password = input("Enter your password: ")
@@ -36,8 +52,8 @@ while True:
         print("Password should contains at-least one character")
     elif not check_password_contains_digit(password):
         print("Password should contains at-least one digit")
-    elif '@' not in password and '#' not in password and '!' not in password and '_' not in password and '&' not in password:
-        print("Password should contain at least one special character (@,!,_,&,#)")
+    elif not check_password_contains_specialchar(password):
+        print("Password should contain at least two special character (@,!,_,&,#)")
     else:
         print(f"Password: {password} is valid.")
         break
