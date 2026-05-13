@@ -21,7 +21,7 @@ def greeting():
     # return None
 
 # Function with one argument & one return value
-def welcome(name):
+def welcome(name): #name="Michael"
     result = f"hello {name}"
     return result
 
@@ -35,10 +35,13 @@ def stock_details():
     return "AAPL", "Apple Inc.", "NASDAQ"
 
 # greeting()
-# message = welcome("Michael")
+# blabla = "Michael"
+# message = welcome(blabla) # welcome("Michael")
 # print(message)
-# s1 = account('Karan', '7888770232')
-# s2 = account('Aryan', '7888770232', 10)
+# user_name = input("Enter your name: ")
+# mobile = input("Enter your phone number: ")
+# s1 = account(user_name, mobile)
+# # s2 = account('Aryan', '7888770232', 10)
 # print(s1)
 # print(s2)
 
