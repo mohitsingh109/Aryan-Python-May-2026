@@ -27,3 +27,35 @@
 # amount (if is_paid = true)
 # we'll update none empty value
 #============#============#============#============#============#============#============#============
+
+# add a course
+    # while true
+        # ==> input return 5 value
+        # ==> validate
+        # if validate pass break
+        # else ask user again
+
+while True:
+    print("\n------------------------------------------------------------\n")
+    print("Course Management:")
+    print("Please select and option:")
+    print("1. Add new course")
+    print("2. Edit a course")
+    print("3. Delete a course")
+    print("4. View a course")
+    print("5. Quit")
+
+    choice = int(input("Enter your choice: "))
+    if choice == 1:
+        print("Add new course") # you will call a function
+    elif choice == 2:
+        print("Edit a course")
+    elif choice == 3:
+        print("Delete a course")
+    elif choice == 4:
+        print("View a course")
+    elif choice == 5:
+        print("Quit")
+        break
+    else:
+        print("Invalid choice")
