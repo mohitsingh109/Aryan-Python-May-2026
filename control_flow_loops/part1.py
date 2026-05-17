@@ -78,7 +78,7 @@ while True:
         print("Password should contains at-least one digit")
     elif not check_password_contains_specialchar(password):
         print("Password should contain at least two special character (@,!,_,&,#)")
-    elif not check_password_contain_uppercase():
+    elif not check_password_contain_uppercase(password):
         print("Password should contain atleast one uppercase character but it should be less than 5 characters")
     elif not check_password_contain_lowercase(password):
         print("Password should contain atleast one loweercase character but it should be less than 5 characters")
