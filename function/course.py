@@ -43,7 +43,7 @@ amount = None
 def add_a_course():
     while True:
         global c_id, name, description, paid, amount
-        c_id, name, description ,paid, amount = course_input ()
+        c_id, name, description ,paid, amount = course_input()
         state, message = validate_course_input()
         if state:
             display_course_details()
