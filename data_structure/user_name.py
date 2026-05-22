@@ -27,6 +27,20 @@ def add_user():
 
     add_user_to_list(username, password)
 
+def remove_user():
+    global users
+    username = input ("Enter your username:")
+    if check_user_exists(username):
+        users.remove(username)
+        print(f"\n User removed: {username}\n")
+
+def show_users():
+    global users
+    for u in users:
+        print(u)
+
+
+
 
 while True:
     print("=======================")
@@ -40,3 +54,12 @@ while True:
     choice = int(input("Enter your choice: "))
     if choice == 1:
         add_user()
+    elif choice == 2:
+        remove_user()
+    elif choice == 3:
+        show_users()
+    elif choice == 4 :
+        print("exit")
+        break
+    else:
+        print("invalid choice")
