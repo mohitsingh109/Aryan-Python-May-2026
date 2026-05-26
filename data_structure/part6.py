@@ -1,3 +1,5 @@
+# High level input option 1. to add a build stats, 2 to view build stats 3. quit
+
 # PASSED, FAILED, RUNNING, SKIP, QUEUED, ERROR
 
 # input
