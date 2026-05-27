@@ -33,6 +33,8 @@
 combination = []
 status_check = set()
 
+# change this to use dict
+
 def input_build_info():
     id = input("Enter id :")
     status = input ("Enter status:")
@@ -41,33 +43,27 @@ def input_build_info():
 def add_build():
     id , status = input_build_info()
     global combination , status_check
-    combine = id +":"+ status
+    combine = f"{id}:{status}"
 
     if combine not in status_check:
         status_check.add(combine)
         combination.append(combine)
+        print(f"Build added {combine}")
 
 def view_build():
     global combination
-    print(f"{combination}")
+    print(combination)
 
 def view_build_by_id():
     global combination
     id = input("Enter id:") + ":"
     for item in combination:
-       if  item.startswith(id):
-        print(f" {item} ")
-
-
-
-
-
-
-
+       if item.startswith(id):
+        print(item)
 
 while True:
      print("1. Add  build status ")
-     print("2.view build status by id")
+     print("2. view build status by id")
      print("3. View all build")
      print("4. exit")
      choice = input("Enter your choice:")
