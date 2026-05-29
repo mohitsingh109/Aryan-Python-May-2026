@@ -1,5 +1,3 @@
-
-
 # change this to use dict
 
 combination = {}
@@ -10,7 +8,6 @@ def add_build():
     status = input("Enter status:")
     if id in combination:
         combination[id].add(status)
-
     else:
         combination[id] = {status}
 
@@ -22,10 +19,6 @@ def view_build_by_id():
     global combination
     id = input("Enter id:")
     print(combination[id])
-
-
-
-
 
 while True:
      print("1. Add  build status ")
