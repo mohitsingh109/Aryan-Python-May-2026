@@ -8,8 +8,23 @@ def add_build():
     global combination
     id = input("Enter id:")
     status = input("Enter status:")
-    combination[id] = status
-    print(f"{id} : {status}")
+    if id in combination:
+        combination[id].add(status)
+
+    else:
+        combination[id] = {status}
+
+def view_build():
+    global combination
+    print(combination)
+
+def view_build_by_id():
+    global combination
+    id = input("Enter id:")
+    print(combination[id])
+
+
+
 
 
 while True:
