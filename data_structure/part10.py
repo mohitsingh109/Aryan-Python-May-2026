@@ -13,9 +13,7 @@ Create a menu-driven Python program that allows a user to perform the following 
 4. View the courses registered by a student.
 5. Remove a course from a student.
 6. Find all students enrolled in a particular course.
-7. Save all student data to a text file.
-8. Load student data from a text file.
-9. Exit the program.
+7. Exit the program.
 
 Available Courses:
 1. Python Programming
