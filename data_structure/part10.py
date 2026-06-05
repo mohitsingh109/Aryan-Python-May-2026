@@ -100,19 +100,63 @@ def view_course():
             print(f" Student name : {s_name} and course:{c_name}")
 
 def remove_course():
-    global course, student_id , course_id
+    global course, student_info , course_id
+    course_remove = input("Enter your course number :")
     for s_id, c_ids in course.items():
         s_name = student_info[s_id]["name"]
-        for c_id in c_ids:
-            c_delete = course_id[c_id]
-            course.pop(c_delete)
-            print(f"Student name : {s_name} and Course: {c_delete} removed")
+        if course_remove in c_ids:
+            course[s_id].remove(course_remove)
+            print(f"Student name : {s_name} and Course: {course_remove} removed")
 
 def search_by_course():
-    global course, student_id , course_id
-    
+    global course, student_info , course_id
+    c_id = input("Enter your course number:")
+    student_name = []
+    for s_id, c_ids in course.items():
+        if c_id in c_ids:
+            c_name = course_id[c_id]
+            s_name = student_info[s_id]["name"]
+            print(f"Student name : {s_name}, Course: {c_name}")
+            student_name.append(s_name)
+    return  student_name
+
+def search_by_year_enrollment(): #list , year of enrollment
+    global student_info
+    y_enrollment = int(input("Enter your year enrollment:"))
+    result = []
+    for record in student_info.values():
+        if y_enrollment in record["year_enrollment"]:
+            name = record["name"]
+            s_id = record["s_id"]
+            result.append(f"{name} - {s_id}")
+
+def search_by_name(): # return all student with same name
+    global student_info
+    name = input("Enter your name:")
+    result = []
+    for record in student_info.values():
+        if name == record["name"]:
+            result.append(f"{name} : {record['s_id']}")
+    return result
 
 
+def search_by_course_name(): # print student info
+    global course_id , course , student_info
+    course_name = input("Enter your course name:")
+    cu_id = None
+    result = []
+    for c_id,c_name in course_id.items():
+        if c_name == course_name:
+            cu_id = c_id
+            break
+    if not cu_id:
+        return result
+    for s_id,c_ids in course.items():
+        if cu_id in c_ids:
+            s_name = student_info[s_id]['name']
+            s_year_enrollment = student_info[s_id]["year_enrollment"]
+            result.append(f"{s_name} - {s_id} - {s_year_enrollment}")
+    return result
 
 
 
@@ -125,7 +169,10 @@ while True:
     print("4.View student courses")
     print("5.Remove course")
     print("6.Search by  course")
-    print("7.Exit")
+    print("7. Search by year enrollment")
+    print("8. search by name ")
+    print("9. search by course name")
+    print("10.Exit")
     registration=input("Enter your choice:")
     if registration=="1":
         add_student()
@@ -138,8 +185,14 @@ while True:
     elif registration=="5":
         remove_course()
     elif registration=="6":
-
+        search_by_course()
     elif registration=="7":
+        search_by_year_enrollment()
+    elif registration=="8":
+        search_by_name()
+    elif registration=="9":
+        search_by_course_name()
+    elif registration=="10":
         print("exit")
         break
     else:
