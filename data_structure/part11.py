@@ -64,4 +64,27 @@
 # 11. Remove a video.
 #
 # 12. Exit.
-#
+
+def add_video():
+    
+
+
+
+
+
+
+
+while True:
+    print('1. Add a new video')
+    print('2. View all videos')
+    print('3. View a video by video id')
+    print('4. Show the most viewed video')
+    print('5. Show the video with highest engagement score')
+    print('6. display all unique tags used in the channel')
+    print('7. Find creators-Trending candidates')
+    print('8. Display the top 3 videos by views')
+    print('9. Show channel summary')
+    print('10. Remove a video')
+    print('12. Exit')
+    choice = int(input("Enter your choice:"))
+    if choice == 1:
