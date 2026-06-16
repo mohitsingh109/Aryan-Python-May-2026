@@ -1,5 +1,5 @@
 # Modules in python
-# (file containing python code)
+# (file_handling containing python code)
 
 # Math module ==> provided by python
 # import math
