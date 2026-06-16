@@ -167,6 +167,7 @@ def category_statistics():
             category_statistics[category]["total_views"] += views
             category_statistics[category]["total_videos"] += 1
 
+
 def trending_candidates():
     global video_info
     trending_candidates = {}
@@ -186,15 +187,16 @@ def trending_candidates():
 
 def top_3_videos_by_views():
     global video_info
-    top_3_videos = []
-    m_vid = None
-    m_views = 0
+    values = sorted(video_info.items(), key=lambda item: item[1]["views"], reverse=True)
+    top_3_videos = values[:3]
 
-    for v_id,record in video_info.items():
-        views = record["views"]
-        
+    for items in top_3_videos:
+        v_id = items[0]
+        views = items[1]["views"]
+        likes = items[1]["likes"]
+        print(f"Top video views : {views}, Top video likes : {likes}, Video id : {v_id}")
 
-
+    return top_3_videos
 
 def channel_summary():
     global video_info
@@ -225,14 +227,13 @@ def channel_summary():
 
 def remove_video():
     global video_info
-    v_id = int(input("Enter your video id:"))
+    v_id = input("Enter your video id:")
     if v_id not in video_info:
         print("Video id does not exist")
         return
     else:
         # del video_info[v_id] # to delete a key from a dictionary
         video_info.pop(v_id)
-
 
 while True:
     print('1. Add a new video')
@@ -265,8 +266,7 @@ while True:
     elif choice == 8:
         trending_candidates()
     elif choice == 9:
-
-
+        top_3_videos_by_views()
     elif choice == 10:
         channel_summary()
     elif choice == 11:
