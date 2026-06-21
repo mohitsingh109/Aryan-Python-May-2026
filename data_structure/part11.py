@@ -67,6 +67,30 @@
 
 video_info = {}
 
+def save_video(v_id, title, views, likes, comments, tags):
+    result_comment = ""
+    result_tag = ""
+    with open("video_record.txt", "a") as file:
+        for comment in comments:
+             result_comment += comment + "|#|"
+        result_comment = result_comment[0:len(result_comment)-3]
+        for tag in tags:
+             result_tag+= tag + "#"
+        result_tag = result_tag[0:len(result_tag)-1]
+
+        row = f"{v_id},{title},{views},{likes},{result_comment},{result_tag}\n"
+        file.write(row)
+
+def load_video_data():
+    with open("video_record.txt", "r") as videos:
+
+        for row in videos:
+            v_id, title, views, likes,comment_str,tag_str = row.split(",")
+            tag_str = tag_str[0:len(tag_str)-1]
+            comments = comment_str.split("|#|")
+            tags = tag_str.split("#")
+            video_info[v_id] = {'v_id': v_id, 'title': title, 'views': views, 'likes': likes,'comments':comments,'tag':tags}
+
 
 
 def add_video():
@@ -84,8 +108,10 @@ def add_video():
     if v_id not in video_info:
         video_info[v_id] =  { "title" : title , "views" : views, "likes" : likes, "comments" : comments ,
                               "tag": tag , "chanel_id": chanel_id , "category" : category }
+        save_video(v_id, title, views, likes, comments, tag)
     else:
         print("Video already exists")
+
 
 def view_all_video():
     global video_info
@@ -235,6 +261,7 @@ def remove_video():
         # del video_info[v_id] # to delete a key from a dictionary
         video_info.pop(v_id)
 
+load_video_data()
 while True:
     print('1. Add a new video')
     print('2. View all videos')

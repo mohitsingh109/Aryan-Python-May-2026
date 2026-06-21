@@ -61,8 +61,38 @@ course_id = { "1" : "Python programming",
               "4":"Data structures",
               "5":"Operating systems",
               "6":"Cyber security",
-              "7":"Cloud computing"}
+              "7":"Cloud computing" }
 course = {}
+
+def save_student(s_id, name, year_enrollment):
+    with open("student_record.txt", "a") as file:
+        row = f"{s_id},{name},{year_enrollment}\n"
+        file.write(row)
+
+
+def load_students_data():
+    global student_info
+    with open("student_record.txt", "r") as students:
+        for row in students:
+            s_id, name, year_enrollment = row.split(",")
+            student_info[s_id] = {"name": name, "s_id": s_id, "year_enrollment": year_enrollment}
+
+def save_courses(s_id,course_id):
+    with open("course_record.txt","a") as courses:
+        row = f"{s_id},{course_id}\n"
+        courses.write(row)
+
+
+def load_course_data():
+    global course
+    with open("course_record.txt", "r") as courses :
+        for row in courses:
+            s_id,course_id = row.split(",")
+            if s_id not in course:
+                course[s_id] = {course_id}
+            else:
+                course[s_id].add(course_id) # how to store set of courses and test this code with save_courses()
+
 
 def add_student():
     global student_info
@@ -74,6 +104,8 @@ def add_student():
         return
     else:
         student_info[s_id] = {"name": name, "s_id" :s_id, "year_enrollment":year_enrollment}
+        save_student(s_id, name, year_enrollment)
+
 
 def view_students():
     global student_info
@@ -87,8 +119,10 @@ def register_course():
     if s_id in student_info and add_course in course_id:
          if s_id in course:
              course[s_id].add(add_course)
+             save_courses(s_id, add_course)
          else:
              course[s_id] = {add_course}
+             save_courses(s_id, add_course)
 
 
 def view_course():
@@ -160,6 +194,8 @@ def search_by_course_name(): # print student info
 
 
 
+load_students_data()
+load_course_data()
 
 while True:
     print("==========================")
@@ -197,6 +233,8 @@ while True:
         break
     else:
         print("Entered wrong choice")
+
+
 
 
 
