@@ -103,6 +103,8 @@ def add_video():
     chanel_id = input("Enter channel id:")
     tag = input("Enter video tags:")
     tag = tag.split(",")
+    # tag = Object of string class
+
     category = input("Enter video category:")
     comments = comments.split(",")
     if v_id not in video_info:
