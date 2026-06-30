@@ -65,21 +65,43 @@
 #
 # 12. Exit.
 
+class Video:
 
-video_info = {}
+    def __init__(self, v_id, title,views,likes,comments,tag,chanel_id,category):
+        self.v_id = v_id  # Instance variable
+        self.title = title  # Instance variable
+        self.views = views
+        self.likes = likes
+        self.comments = comments
+        self.tag = tag
+        self.chanel_id = chanel_id
+        self.category = category
 
-def save_video(v_id, title, views, likes, comments, tags):
-    result_comment = ""
-    result_tag = ""
-    with open("video_record.txt", "a") as file:
-        for comment in comments:
+    def txt_file_row_str(self):
+        result_comment = ""
+        result_tag = ""
+        for comment in self.comments:
              result_comment += comment + "|#|"
         result_comment = result_comment[0:len(result_comment)-3]
-        for tag in tags:
+        for tag in self.tag:
              result_tag+= tag + "#"
         result_tag = result_tag[0:len(result_tag)-1]
 
-        row = f"{v_id},{title},{views},{likes},{result_comment},{result_tag}\n"
+        return f"{self.v_id},{self.title},{self.views},{self.likes},{result_comment},{result_tag},{self.chanel_id},{self.category}\n"
+
+
+    def display(self):
+        print(f"Video id : {self.v_id}, title: {self.title}, views: {self.views}, likes: {self.likes}, comments: {self.comments}, tag: {self.tag} , chanel_id: {self.chanel_id}, category: {self.category}")
+
+
+
+
+
+video_info = {}
+
+def save_video(video_obj):
+    with open("video_record.txt", "a") as file:
+        row = video_obj.txt_file_row_str()
         file.write(row)
 
 def load_video_data():
@@ -89,7 +111,7 @@ def load_video_data():
             v_id, title, views, likes,comment_str,tag_str = row.split(",")
             comments = comment_str.split("|#|")
             tags = tag_str.split("#")
-            video_info[v_id] = {'v_id': v_id, 'title': title, 'views': views, 'likes': likes,'comments':comments,'tag':tags}
+            video_info[v_id] = Video(v_id,title,views,likes,comments,tags)
 
 
 
@@ -104,23 +126,32 @@ def add_video():
     tag = input("Enter video tags:")
     tag = tag.split(",")
     # tag = Object of string class
-
     category = input("Enter video category:")
     comments = comments.split(",")
     if v_id not in video_info:
-        video_info[v_id] =  { "title" : title , "views" : views, "likes" : likes, "comments" : comments ,
-                              "tag": tag , "chanel_id": chanel_id , "category" : category }
-        save_video(v_id, title, views, likes, comments, tag)
+        vid = Video(v_id,title,views,likes,comments,tag,chanel_id,category)
+        video_info[v_id] = vid
+        save_video(vid)
     else:
         print("Video already exists")
 
 
 def view_all_video():
     global video_info
-    for v_id, record in video_info.items():
-        print(f" Video id : {v_id} , views : {record["views"]} , likes : {record["likes"]}")
-        print(f"Comments : {record["comments"]}")
-        print(f" Tag : {record["tag"]}")
+    for vid  in video_info.values():
+        vid.display()
+
+
+"""
+{
+    "1": Student("name": "Mohit", "s_id" :1, "year_enrollment": 2015),
+    "2": Student("name": "Aryan", "s_id" :2, "year_enrollment": 2023),
+    ....
+
+    student_info["1"].name ??
+    student_info["1"].year_enrollment
+}
+"""
 
 def search_video_by_id():
     global video_info
@@ -130,9 +161,7 @@ def search_video_by_id():
         return False
     else:
         record = video_info[v_id]
-        print(f" Video id : {v_id} , views : {record["views"]} , likes : {record["likes"]}")
-        print(f"Comments : {record["comments"]}")
-        print(f" Tag : {record["tag"]}")
+        record.display()
         return True
 
 def max_view_video():
@@ -142,12 +171,12 @@ def max_view_video():
     m_record = None
 
     for v_id, record in video_info.items():
-        if record["views"] > m_views :
-            m_views = record["views"]
+        if record.views > m_views :
+            m_views = record.views
             m_v_id = v_id
             m_record = record
 
-    print(f"Video id : {m_v_id} , views:{m_views}, likes: {m_record["likes"]}")
+    print(f"Video id : {m_v_id} , views:{m_views}, likes: {m_record.likes}")
     return m_views
 
 
@@ -158,12 +187,12 @@ def highest_engagement():
     m_record = None
 
     for v_id ,record in video_info.items():
-        if record["likes"] + len(record["comments"]) > engagement:
-            engagement = record["likes"] + len(record["comments"])
+        if record.likes + len(record.comments) > engagement:
+            engagement = record.likes + len(record.comments)
             m_v_id = v_id
             m_record = record
 
-    print(f"Video id : {m_v_id} ,Engagement : {engagement}, views : {m_record["views"]}, likes: {m_record["likes"]}")
+    print(f"Video id : {m_v_id} ,Engagement : {engagement}, views : {m_record.views}, likes: {m_record.likes}")
 
     return engagement,m_v_id, m_record
 
