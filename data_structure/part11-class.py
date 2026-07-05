@@ -77,6 +77,7 @@ class Video:
         self.chanel_id = chanel_id
         self.category = category
 
+    # Object function
     def txt_file_row_str(self):
         result_comment = ""
         result_tag = ""
