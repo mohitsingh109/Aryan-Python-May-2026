@@ -32,9 +32,40 @@ class EmployeeManager:
 
 
     def update_salary(self, eid, salary):
-        pass
+        if eid in self.employee_map:
+            self.employee_map[eid].salary = salary
+            for e in self.employees:
+                if e.employee_id == eid:
+                    e.salary = salary
+                    break
+
+        else :
+            print("Employee does not exist")
 
 
     def search_by_id(self, eid):
-        pass
+        if eid in self.employee_map:
+            return self.employee_map[eid]
+        else:
+            print("Employee does not exist")
+
+    def search_by_department(self, department):
+        result = []
+
+        for e in self.employees:
+            if e.department == department:
+                result.append(e)
+
+        return result
+
+    def search_by_city(self,city):
+        by_city = []
+
+        for e in self.employees:
+            if e.city == city:
+                by_city.append(e)
+
+        return by_city
+    def
+
 
