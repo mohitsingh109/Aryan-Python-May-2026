@@ -18,36 +18,22 @@ class EmployeeManager:
             print("Employee does not exist")
             return
 
-        self.employee_map.pop(eid) # dict remove??
-        # ---- ?
-        # Do i have index of eid in employee list?
-        # No
-
-        # Do i have value to remove it from employee list?
-        # No
-        for e in self.employees:
-            if e.employee_id == eid:
-                self.employees.remove(e)
-                break
+        e = self.employee_map.pop(eid)
+        self.employees.remove(e)
 
 
     def update_salary(self, eid, salary):
         if eid in self.employee_map:
             self.employee_map[eid].salary = salary
-            for e in self.employees:
-                if e.employee_id == eid:
-                    e.salary = salary
-                    break
-
-        else :
+        else:
             print("Employee does not exist")
-
 
     def search_by_id(self, eid):
         if eid in self.employee_map:
             return self.employee_map[eid]
         else:
             print("Employee does not exist")
+            return None
 
     def search_by_department(self, department):
         result = []
@@ -66,6 +52,5 @@ class EmployeeManager:
                 by_city.append(e)
 
         return by_city
-    def
 
 
