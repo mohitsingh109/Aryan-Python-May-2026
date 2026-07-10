@@ -1,6 +1,7 @@
 from oops.employee_management.employee import Employee
 
 import ast
+
 def save_employee(e):
     with open("employees.txt","a") as file:
         # file.write(f"{e.employee_id},{e.name},{e.department},{e.designation},{e.salary},{e.experience},{e.city}\n")
@@ -16,6 +17,9 @@ def load_employees():
             employee_list.append(e)
     return employee_list
 
+
+def remove_employee(eid):
+    pass
 
 
 
