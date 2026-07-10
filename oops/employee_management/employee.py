@@ -21,6 +21,17 @@ class Employee:
             "city": self.city
         }
 
+    @staticmethod
+    def from_dict(data):
+        return Employee(data["employee_id"],
+                        data["name"],
+                        data["department"],
+                        data["designation"],
+                        data["salary"],
+                        data["experience"],
+                        data["city"])
+
     def __str__(self):
-        return f"Employee ID: {self.employee_id}, Name: {self.name}, Department: {self.department}, Designation: {self.designation}, Salary: {self.salary}, Experience: {self.experience}, City: {self.city}"
+        return (f"Employee ID: {self.employee_id}, Name: {self.name}, Department: {self.department}, Designation: {self.designation},"
+                f"Salary: {self.salary}, Experience: {self.experience}, City: {self.city}")
 
