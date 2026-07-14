@@ -7,26 +7,30 @@ class EmployeeManager:
     def add_employee(self, e): # e = Employee class object
         if e.employee_id in self.employee_map:
             print("Employee already exists")
-            return
+            return False
 
         self.employees.append(e)
         self.employee_map[e.employee_id] = e
+        return True
 
 
     def remove_employee(self, eid):
         if eid not in self.employee_map:
             print("Employee does not exist")
-            return
+            return False
 
         e = self.employee_map.pop(eid)
         self.employees.remove(e)
+        return True
 
 
     def update_salary(self, eid, salary):
         if eid in self.employee_map:
             self.employee_map[eid].salary = salary
+            return self.employee_map[eid]
         else:
             print("Employee does not exist")
+            return None
 
     def search_by_id(self, eid):
         if eid in self.employee_map:
