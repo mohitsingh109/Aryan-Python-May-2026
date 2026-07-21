@@ -42,7 +42,7 @@ class Bike(Vehicle):
         super().__init__(vehicle_id,brand,model,rent_per_day,availability)
         self.helmet_included = helmet_included
 
-    def wheelie_method(self):
+    def wheelie_mode(self):
         print("Wheelie started")
 
 class Truck(Vehicle):
