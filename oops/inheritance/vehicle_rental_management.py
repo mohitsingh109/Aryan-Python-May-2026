@@ -7,11 +7,16 @@ class Vehicle:
         self.availability = availability
 
     def display(self):
-        print(self.vehicle_id)
-        print(self.brand)
-        print(self.model)
-        print(self.rent_per_day)
-        print(self.availability)
+        print("===========================================")
+        print(f"Vehicle Id = {self.vehicle_id}")
+        print(f"Brand = {self.brand}")
+        print(f"Model = {self.model}")
+        print(f"Rent/Day = {self.rent_per_day}")
+        if self.availability:
+            print(f"Availability = Available")
+        else:
+            print(f"Availability = Rented")
+        print("==========================================")
 
     def rent_vehicle(self):
         if self.availability:
@@ -19,7 +24,6 @@ class Vehicle:
             print("Vehicle rented successfully")
         else:
             print("Vehicle already rented")
-
 
     def return_vehicle(self):
         if self.availability:
@@ -37,6 +41,12 @@ class Car(Vehicle):
     def start_ac(self):
         print("AC started")
 
+    def display(self):
+        print("=============Car===============")
+        super().display()
+        print(f"Number of Doors = {self.number_of_doors}")
+
+
 class Bike(Vehicle):
     def __init__(self, vehicle_id,brand,model,rent_per_day,availability,helmet_included):
         super().__init__(vehicle_id,brand,model,rent_per_day,availability)
@@ -45,6 +55,12 @@ class Bike(Vehicle):
     def wheelie_mode(self):
         print("Wheelie started")
 
+    def display(self):
+        print("=========Bike=================")
+        super().display()
+        print(f"Helmet = {self.helmet_included}")
+
+
 class Truck(Vehicle):
     def __init__(self, vehicle_id,brand,model,rent_per_day,availability,load_capacity):
         super().__init__(vehicle_id,brand,model,rent_per_day,availability)
@@ -52,6 +68,11 @@ class Truck(Vehicle):
 
     def load_cargo(self):
         print("Cargo loaded")
+
+    def display(self):
+        print("============Truck===============")
+        super().display()
+        print(f"Load Capacity = {self.load_capacity}")
 
 
 
