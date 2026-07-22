@@ -12,10 +12,11 @@ class Vehicle:
         print(f"Brand = {self.brand}")
         print(f"Model = {self.model}")
         print(f"Rent/Day = {self.rent_per_day}")
-        if self.availability:
-            print(f"Availability = Available")
-        else:
-            print(f"Availability = Rented")
+        # if self.availability:
+        #     print(f"Availability = Available")
+        # else:
+        #     print(f"Availability = Rented")
+        print(f"Availability = { "Available" if self.availability else "Rented" }")
         print("==========================================")
 
     def rent_vehicle(self):
