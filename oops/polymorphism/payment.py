@@ -34,4 +34,4 @@ payments = [
 ]
 
 for payment in payments:
-    payment.pay(100) # ?
+    payment.pay(100)
