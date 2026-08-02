@@ -56,11 +56,19 @@ FileNotFoundError  --> File not found
 # sms connection SMTP --> I need to release this also
 # debugging --> send a sms (pass/fail)
 
+# try:
+#     num = int(input("Enter a number: "))
+#     result = 100 / num
+# except ZeroDivisionError:
+#     print("Cannot divide by zero")
+# finally:
+#     print("Release db connection")
+#     print("Release db sms SMTP connection")
+
+
 try:
     num = int(input("Enter a number: "))
     result = 100 / num
-except ZeroDivisionError:
-    print("Cannot divide by zero")
 finally:
     print("Release db connection")
     print("Release db sms SMTP connection")

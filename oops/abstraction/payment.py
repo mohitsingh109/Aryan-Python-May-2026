@@ -1,10 +1,24 @@
-# Polymorphism -> "many forms" -> same function name but different implementation
+# ATM Machine
 
-# e-commerce application
-# Customer can pay using (Credit card, UPI, PayPal)
-# Every payment has a method called pay()
+"""
+User can:
+- withdraw money
+- check balance
+- deposit money
 
-class Payment:
+User can't do:
+- How bank server is validates my PIN
+- How database is updating my balance
+- How transaction is processed
+"""
+# How to implement it in python
+# ABC class, abstractmethod annotation
+
+from abc import ABC, abstractmethod
+
+class Payment(ABC):
+
+    @abstractmethod
     def pay(self, amount):
         pass
 
@@ -27,7 +41,8 @@ class PayPal(Payment):
         print(f"Paying {amount} using PayPal")
 
 class DebitCard(Payment):
-    pass
+    def pay(self, amount):
+        print(f"Paying {amount} using DebitCard")
 
 
 payments = [
