@@ -1,0 +1,24 @@
+What is .venv?
+- to isolate the dependencies of a Python project from the global Python environment.
+
+UV --> Python package manager
+UV --> It is used to install and manage Python packages and dependencies (biopython,numpy, pandas).
+UV --> pyproject.toml file is used to manage the dependencies of a Python project.
+
+
+How to install UV:
+- brew install uv
+- pip install uv
+- Via an internet
+
+How pyproject.toml is created?
+uv init
+
+How to add dependencies in pyproject.toml?
+uv add <package_name>
+uv add biopython --->
+1. add biopython in pyproject.toml
+2. install biopython package in the virtual environment
+
+
+uv sync --> Install all the dependencies mentioned in pyproject.toml file in the virtual environment
