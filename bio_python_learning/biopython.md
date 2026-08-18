@@ -13,4 +13,5 @@ Bio python --> kitchen with tools
 3. Sequence alignment and analysis (Bio.Align, Bio.AlignIO, Bio.pairwise2)
 4. Blast searches and parsing results (Bio.Blast)
 5. Running blast server in local(MacBook) environment required: (software (blastq) + data)
-6. Blast New API
+6. Blast New API (Blast)
+7. Blast New API (Blast) --> Parsing results (JSON2)
