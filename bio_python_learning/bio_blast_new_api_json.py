@@ -19,10 +19,10 @@ import zipfile
 myzipfile = zipfile.ZipFile("myzipfile.zip")
 file_list = myzipfile.namelist() # List of file names ['87N79GNG016.json', '87N79GNG016_1.json']
 print(file_list)
-stream = myzipfile.open(file_list[0])
-data = stream.read()
-data = data.decode()
-print(data)
+stream = myzipfile.open(file_list[0]) # '87N79GNG016.json'
+data = stream.read() # Bytes
+data = data.decode() # Bytes to String
+print(type(data), data)
 
 stream = myzipfile.open(file_list[1])
 data = stream.read()
@@ -31,7 +31,7 @@ print(type(data), data)
 
 # convert str to json
 import json
-d = json.loads(data)
+d = json.loads(data) # convert str to dict/Json
 print(type(d))
 program = d["BlastOutput2"]["report"]["program"]
 version = d["BlastOutput2"]["report"]["version"]

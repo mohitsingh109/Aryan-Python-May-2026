@@ -15,3 +15,4 @@ Bio python --> kitchen with tools
 5. Running blast server in local(MacBook) environment required: (software (blastq) + data)
 6. Blast New API (Blast)
 7. Blast New API (Blast) --> Parsing results (JSON2)
+8. Alignment Next set of API with Align Package
